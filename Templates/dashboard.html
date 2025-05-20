@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NeoGuard | Fraud Analytics Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/styles.css') }}">
+    <style>
+        .dashboard-container {
+            padding: 2rem;
+            margin-top: 6rem;
+        }
+        
+        .dashboard-header {
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        
+        .powerbi-container {
+            width: 100%;
+            height: 85vh;
+            border: 1px solid var(--primary);
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            background-color: var(--dark);
+        }
+        
+        .powerbi-embed {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <header>
+        <div class="nav-container">
+            <a href="{{ url_for('index') }}" class="logo">Neo-<span>FraudSight</span></a>
+            <ul class="nav-links">
+                <li><a href="{{ url_for('index') }}#features">Features</a></li>
+                <li><a href="{{ url_for('index') }}#how-it-works">How It Works</a></li>
+                <li><a href="{{ url_for('index') }}#data-scanner">Try It</a></li>
+                <li><a href="{{ url_for('index') }}#stats">Stats</a></li>
+                <li><a href="{{ url_for('index') }}#demo">Demo</a></li>
+                <li><a href="{{ url_for('dashboard') }}">Dashboard</a></li>
+                <li><a href="{{ url_for('index') }}#contact">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+    
+    <!-- Dashboard Section -->
+    <div class="dashboard-container">
+        <div class="dashboard-header">
+            <h1>Fraud Analytics Dashboard</h1>
+            <p>Interactive visualizations of fraud detection patterns and statistics</p>
+        </div>
+        
+        <div class="powerbi-container">
+    <iframe 
+        class="powerbi-embed"
+        src="https://app.powerbi.com/view?r=eyJrIjoiMDE3ZTA3NzEtMGI3My00MjViLThiMzAtYTFiNzExYzc5NzUxIiwidCI6IjM0YmQ4YmVkLTJhYzEtNDFhZS05ZjA4LTRlMGEzZjExNzA2YyJ9"
+        frameborder="0" 
+        allowFullScreen="true">
+    </iframe>
+</div>
+    </div>
+   
+        
+        <!-- SHAP Visualizations Section -->
+        <div class="shap-visualizations">
+            <h2>Model Interpretability</h2>
+            <p>SHAP (SHapley Additive exPlanations) values help understand feature importance in our models</p>
+            
+            <div class="shap-container">
+                <!-- Random Forest SHAP Summary -->
+                <div class="shap-card">
+                    <h3>SHAP Summary for Random Forest</h3>
+                    <div class="shap-image">
+                        <img src="{{ url_for('static', filename='images/shap_random_forest.png') }}" alt="SHAP Summary for Random Forest Model">
+                    </div>
+                    <p class="shap-description">Feature importance visualization showing how each variable impacts fraud prediction in our Random Forest model.</p>
+                </div>
+                
+                <!-- Deep Neural Network SHAP Summary -->
+                <div class="shap-card">
+                    <h3>SHAP Summary for Deep Neural Network</h3>
+                    <div class="shap-image">
+                        <img src="{{ url_for('static', filename='images/shap_dnn.png') }}" alt="SHAP Summary for Deep Neural Network Model">
+                    </div>
+                    <p class="shap-description">Feature importance visualization showing how each variable impacts fraud prediction in our Deep Neural Network model.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h4>NeoGuard</h4>
+                <p>Advanced AI-powered fraud <br>detection for the digital age. <br> 
+                   Protect your assets with <br>cutting-edge technology.</p>
+                <div class="social-links">
+                    <a href="#" class="social-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                        </svg>
+                    </a>
+                    <a href="#" class="social-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+                        </svg>
+                    </a>
+                    <a href="#" class="social-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                            <rect x="2" y="9" width="4" height="12"></rect>
+                            <circle cx="4" cy="4" r="2"></circle>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="{{ url_for('index') }}#features">Features</a></li>
+                    <li><a href="{{ url_for('index') }}#how-it-works">How It Works</a></li>
+                    <li><a href="{{ url_for('index') }}#stats">Performance Stats</a></li>
+                    <li><a href="{{ url_for('index') }}#demo">Live Demo</a></li>
+                    <li><a href="{{ url_for('dashboard') }}">Dashboard</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Contact Us</h4>
+                <ul class="footer-links">
+                    <li>Email: akchoudhary6595@gmail.com</li>
+                    <li>Phone: +91 8427259405</li>
+                    <li>Address: Cyber Tower, Tech District</li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 NeoGuard. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='JS/script.js') }}"></script>
+</body>
+</html>
